@@ -1,3 +1,5 @@
+# ansible-playbook -i myinventory playbooks/byo/config.yml -e 'ansible_python_interpreter=/usr/bin/python3' -v
+#
 # Create an OSEv3 group that contains the masters and nodes groups
 [OSEv3:children]
 masters
@@ -14,7 +16,7 @@ openshift_release=v1.3.1
 openshift_router_selector='region=infra'
 openshift_registry_selector='region=infra'
 openshift_node_labels="{'region':'infra','zone':'default'}"
-openshift_master_default_subdomain=107.21.5.26.xip.io
+openshift_master_default_subdomain=107.20.105.142.xip.io
 
 # enable htpasswd auth
 # $ htpasswd -bc /dev/stdout user1 AtomicOrigin
@@ -29,15 +31,15 @@ openshift_master_htpasswd_users={'user1': '$apr1$oPBBkfo9$sL7xZ/EqiCEH13cZoHPVm.
 
 # host group for masters
 [masters]
-54.91.233.51.xip.io openshift_public_hostname=54.91.233.51.xip.io openshift_hostname=10.0.59.36
+54.86.64.126.xip.io openshift_public_hostname=54.82.251.167.xip.io openshift_hostname=10.0.182.231
 
-# host group for etcd, run on a node that is not schedulable
+# host group for etcd, should run on a node that is not schedulable
 [etcd]
-54.91.233.51.xip.io
+54.86.64.126.xip.io
 
 # host group for nodes
 [nodes]
-54.91.233.51.xip.io openshift_hostname=10.0.59.36 openshift_schedulable=false
-107.21.5.26.xip.io openshift_hostname=10.0.87.65
-107.22.57.144.xip.io openshift_hostname=10.0.194.114
+54.86.64.126.xip.io openshift_hostname=10.0.182.231 openshift_schedulable=false
+107.20.105.142.xip.io openshift_hostname=10.0.176.205
+107.21.22.114.xip.io openshift_hostname=10.0.142.214
 
